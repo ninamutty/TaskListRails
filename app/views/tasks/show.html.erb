@@ -1,2 +1,10 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<article>
+  <h1><%=  @onetask[:title ]%></h1>
+  <h4><%=  @onetask[:description ]%></h4>
+  <p>status: <%= @onetask[:status] == true ? "YES! GOLD STAR ⭐️" : "Nope! C'mon now - hop to it!" %></p>
+  <p>completed: <%= @onetask[:completed] == nil ? "N/A - You gotta complete this first!" : @onetask[:completed] %></p>
+
+  <p> <%= link_to("Edit", edit_path(@onetask[:id])) %></p>
+  <p> <%= link_to("Delete", delete_path(@onetask[:id]), method: :destroy) %></p>
+
+</article>
