@@ -1,2 +1,18 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<h1>Edit Your Task: </h1>
+
+<form name="edit-task" action="update" method="post">
+  <input type="hidden" name="_method" value="PUT" />
+
+  <label for="title">Task Name: </label>
+  <input type="text" name="title" id="title" value="<%= @onetask[:title]%>"/>
+
+  <label for="description">Task Description: </label>
+  <textarea name="description" id="description" rows="10" col="50" /><%= @onetask[:description]%></textarea>
+
+  <label for="status">Status: </label>
+  <input type="text" name="status" id="status" value="<%= @onetask[:status]%>"/>
+
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)%>
+
+  <button type="submit">Submit</button>
+</form>

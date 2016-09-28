@@ -1,2 +1,8 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<article>
+  <h1><%= @title %></h1>
+  <h2><%= @description %></h2>
+  <p>status: <%= @status == "yes" ? "YES! GOLD STAR ⭐️" : "Nope! C'mon now - hop to it!"%></p>
+  <p>completed: <%= @status == nil ? "N/A - You gotta complete this first!" : @status %></p>
+
+  <p><%= link_to("Home", index_path) %></p>
+</article>
