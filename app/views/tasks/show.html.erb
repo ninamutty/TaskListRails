@@ -1,10 +1,11 @@
 <article>
-  <h1><%=  @onetask[:title ]%></h1>
-  <h4><%=  @onetask[:description ]%></h4>
-  <p>status: <%= @onetask[:status] == "yes" ? "YES! GOLD STAR ⭐️" : "Nope! C'mon now - hop to it!" %></p>
-  <p>completed: <%= @onetask[:completed] == nil ? "N/A - You gotta complete this first!" : @onetask[:completed] %></p>
+  <h1><%=  @onetask.title%></h1>
+  <h4><%=  @onetask.description%></h4>
+  <p>status: <%= @onetask.completed == nil ? "Nope! C'mon now - hop to it!" : "YES! GOLD STAR ⭐️" %></p>
 
-  <p> <%= link_to("Edit", edit_path(@onetask[:id])) %></p>
-  <p> <%= link_to("Delete", delete_path(@onetask[:id]), method: :destroy) %></p>
+  <p>completed: <%= @onetask.completed == nil ? "N/A - You gotta complete this first!" : @onetask.completed %></p>
+
+  <p> <%= button_to "Edit", {action: "edit", id: @onetask.id}, method: :get, data: {confirm: "Do you want to edit?"} %></p>
+  <p> <%= button_to "Delete", {action: "destroy", id: @onetask.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
 
 </article>

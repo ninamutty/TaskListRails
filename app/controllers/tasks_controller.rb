@@ -1,25 +1,15 @@
 class TasksController < ApplicationController
   def index
     @welcome_msg = "Hello!! Welcome to Tasks Master! Here are your tasks: (Do them or DIE)"
-    @tasks = TasksController.alltasks
+    @tasks = Task.all
   end
 
   def show
-    @tasks = TasksController.alltasks
-    @onetask = nil
-    @tasks.each do |task|
-      number = params[:id].to_i
-
-      if task[:id] == number
-        @onetask = task
-      end
-    end
-    if @onetask == nil
-      render :file => 'public/404.html', :status => :not_found, :layout => false
-    end
+    @onetask = Task.find(params[:id].to_i)
   end
 
   def new
+    @onetask = Task.new
   end
 
   def edit
@@ -35,15 +25,20 @@ class TasksController < ApplicationController
     @onetask[:status] == "yes" ? @onetask[:completed] = Date.new : @onetask[:completed] = nil
   end
 
+
   def destroy
+    @onetask = Task.destroy(params[:id].to_i)
   end
 
   def create
     @params = params
-    @title = params[:title]
-    @description = params[:description]
-    @status = "no"
-    @completed = nil
+    @onetask = Task.new
+
+    @title = params[:task][:title]
+    @description = params[:task][:description]
+    @completed = [:task][:completed]
+
+    @onetask.save
   end
 
   def self.alltasks

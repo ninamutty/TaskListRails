@@ -2,8 +2,8 @@
 <h1><%= @welcome_msg %></h1>
 <% @tasks.each do |task| %>
   <article>
-    <h2><%= link_to(task[:title], show_path(task[:id])) %></h2>
-    <p>status: <%= task[:status] == "yes" ? "YES! GOLD STAR ⭐️" : "Nope! C'mon now - hop to it!" %></p>
+    <h2><%= link_to(task.title, show_path(task.id)) %></h2>
+    <p>status: <%= task.completed == nil ? "Nope! C'mon now - hop to it!" : "YES! GOLD STAR ⭐️" %></p>
   </article>
 <% end %>
 <p class="go-to-new"><%= link_to("+ Add Task", new_path) %></p>

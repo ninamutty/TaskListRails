@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   root to: 'tasks#index'
   get 'tasks/index', as: 'index'
 
-
-  get 'tasks/new', as: 'new'
-  post 'tasks/create' => 'tasks#create', as: 'create'
-
-
   get 'tasks/show'
   get 'tasks/show/:id' => 'tasks#show', as: 'show'
+
+  get 'tasks/new', as: 'new'
+  post 'tasks' => 'tasks#create', as: 'create'
+
+  post 'tasks/create' => 'tasks#create', as: 'create'
 
 
   get 'tasks/:id/edit' => 'tasks#edit', as: 'edit'
