@@ -13,16 +13,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    show
   end
 
   def update
-    show
-
-    @onetask[:title] = params["title"]
-    @onetask[:description] = params["description"]
-    @onetask[:status] = params["status"]
-    @onetask[:status] == "yes" ? @onetask[:completed] = Date.new : @onetask[:completed] = nil
   end
 
 
@@ -34,11 +27,11 @@ class TasksController < ApplicationController
     @params = params
     @onetask = Task.new
 
-    @title = params[:task][:title]
-    @description = params[:task][:description]
-    @completed = [:task][:completed]
+    @onetask.title = params[:task][:title]
+    @onetask.description = params[:task][:description]
 
     @onetask.save
+    #redirect_to action: 'index'
   end
 
   def self.alltasks

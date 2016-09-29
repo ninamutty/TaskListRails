@@ -1,8 +1,6 @@
 <article>
   <h1><%=  @onetask[:title ]%></h1>
   <h4><%=  @onetask[:description ]%></h4>
-  <p>status: <%= @onetask[:status] == "yes" ? "YES! GOLD STAR ⭐️" : "Nope! C'mon now - hop to it!" %></p>
-  <p>completed: <%= @onetask[:completed] == nil ? "N/A - You gotta complete this first!" : @onetask[:completed] %></p>
 
   <p><%= link_to("Home", index_path) %></p>
 </article>
