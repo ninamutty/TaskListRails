@@ -1,18 +1,14 @@
 <h1>Edit Your Task: </h1>
 
-<form name="edit-task" action="update" method="post">
-  <input type="hidden" name="_method" value="PUT" />
+<%= form_for @onetask, url: update_path do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-  <label for="title">Task Name: </label>
-  <input type="text" name="title" id="title" value="<%= @onetask[:title]%>"/>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
 
-  <label for="description">Task Description: </label>
-  <textarea name="description" id="description" rows="10" col="50" /><%= @onetask[:description]%></textarea>
+  <%= f.label :complete %>
+  <%= f.check_box :complete %>
 
-  <label for="status">Status: </label>
-  <input type="text" name="status" id="status" value="<%= @onetask[:status]%>"/>
-
-  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)%>
-
-  <button type="submit">Submit</button>
-</form>
+  <%= f.submit %>
+<% end %>

@@ -1,6 +1,5 @@
 <h1>Create a New Task: </h1>
-<p>
-</p>
+
 <%= form_for @onetask, url: create_path do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -8,7 +7,8 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  
+  <%= f.label :complete %>
+  <%= f.check_box :complete %>
 
   <%= f.submit %>
 <% end %>

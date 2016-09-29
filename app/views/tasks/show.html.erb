@@ -1,7 +1,11 @@
 <article>
   <h1><%=  @onetask.title%></h1>
   <h2><%=  @onetask.description%></h2>
+  <p> Complete: <%= @onetask.complete %> </p>
 
+  <% if @onetask.complete == true %>
+    <p> Completed: <%= @onetask.completed_at %></p>
+  <% end %>
 
   <p> <%= button_to "Edit", {action: "edit", id: @onetask.id}, method: :get, data: {confirm: "Do you want to edit?"} %></p>
   <p> <%= button_to "Delete", {action: "destroy", id: @onetask.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>

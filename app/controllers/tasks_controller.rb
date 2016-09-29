@@ -16,11 +16,13 @@ class TasksController < ApplicationController
   end
 
   def update
+      @onetask.completed_at = DateTime.now if @onetask.complete == true
   end
 
 
   def destroy
     @onetask = Task.destroy(params[:id].to_i)
+    redirect_to action: 'index'
   end
 
   def create
@@ -29,9 +31,11 @@ class TasksController < ApplicationController
 
     @onetask.title = params[:task][:title]
     @onetask.description = params[:task][:description]
+    @onetask.complete = params[:task][:complete]
+    @onetask.completed_at = DateTime.now if @onetask.complete == true
 
     @onetask.save
-    #redirect_to action: 'index'
+    redirect_to action: 'index'
   end
 
   def self.alltasks
