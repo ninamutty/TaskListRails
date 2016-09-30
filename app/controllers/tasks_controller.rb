@@ -30,6 +30,15 @@ class TasksController < ApplicationController
     redirect_to action: 'index'
   end
 
+  def complete
+    @onetask = Task.find(params[:id].to_i)
+    
+    @onetask.complete = true
+    @onetask.completed_at = DateTime.now if @onetask.complete == true
+    @onetask.save
+
+    redirect_to action: 'index'
+  end
 
   def destroy
     @onetask = Task.destroy(params[:id].to_i)

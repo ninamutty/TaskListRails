@@ -3,6 +3,8 @@
   <article>
     <h2><%= link_to(task.title, show_path(task.id)) %></h2>
     <p> <%= button_to "Edit", {action: "edit", id: task.id}, method: :get %></p>
+    <p> <%= button_to "Complete", {action: "complete", id: task.id}, method: :patch %></p>
+    <p class="star">  <%= " ⭐️ " if task.complete == true %></p>
     <p> <%= button_to "Delete", {action: "destroy", id: task.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
   </article>
 <% end %>
