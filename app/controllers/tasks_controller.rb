@@ -13,10 +13,21 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @onetask = Task.find(params[:id].to_i)
   end
 
   def update
-      @onetask.completed_at = DateTime.now if @onetask.complete == true
+    @params = params
+
+    @onetask = Task.find(params[:id].to_i)
+
+    @onetask.title = params[:task][:title]
+    @onetask.description = params[:task][:description]
+    @onetask.complete = params[:task][:complete]
+    @onetask.completed_at = DateTime.now if @onetask.complete == true
+
+    @onetask.save
+    redirect_to action: 'index'
   end
 
 
