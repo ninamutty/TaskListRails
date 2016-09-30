@@ -1,9 +1,11 @@
-<h1><%= @welcome_msg %></h1>
+<h1> Hello!! Welcome to <span class="animated tada">Task Master!</span> Here are your tasks: (Do them or DIE) </h1>
 <% @tasks.each do |task| %>
   <article>
-    <h2><%= link_to(task.title, show_path(task.id)) %></h2>
+    <div class="title_block">
+      <h2 class='hvr-sweep-to-left task_list'><%= link_to(task.title, show_path(task.id)) %></h2>
+    </div>
     <p> <%= button_to "Edit", {action: "edit", id: task.id}, method: :get %></p>
-    <p> <%= button_to "Complete", {action: "complete", id: task.id}, method: :patch %></p>
+    <p class="complete_button"> <%= button_to "Complete", {action: "complete", id: task.id}, method: :patch %></p>
     <p class="star">  <%= " ⭐️ " if task.complete == true %></p>
     <p> <%= button_to "Delete", {action: "destroy", id: task.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
   </article>

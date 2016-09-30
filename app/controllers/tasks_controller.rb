@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   def index
-    @welcome_msg = "Hello!! Welcome to Tasks Master! Here are your tasks: (Do them or DIE)"
     @tasks = Task.all
   end
 
@@ -23,7 +22,7 @@ class TasksController < ApplicationController
     @onetask.title = params[:task][:title]
     @onetask.description = params[:task][:description]
     @onetask.complete = params[:task][:complete]
-    @onetask.completed_at = DateTime.now if @onetask.complete == true
+    @onetask.complete == true ? @onetask.completed_at = DateTime.now : @onetask.completed_at = nil
 
     @onetask.save
     redirect_to action: 'index'
@@ -33,7 +32,7 @@ class TasksController < ApplicationController
     @onetask = Task.find(params[:id].to_i)
 
     @onetask.complete = true
-    @onetask.completed_at = DateTime.now if @onetask.complete == true
+    @onetask.complete == true ? @onetask.completed_at = DateTime.now : @onetask.completed_at = nil
     @onetask.save
 
     redirect_to action: 'index'
@@ -51,7 +50,7 @@ class TasksController < ApplicationController
     @onetask.title = params[:task][:title]
     @onetask.description = params[:task][:description]
     @onetask.complete = params[:task][:complete]
-    @onetask.completed_at = DateTime.now if @onetask.complete == true
+    @onetask.complete == true ? @onetask.completed_at = DateTime.now : @onetask.completed_at = nil
 
     @onetask.save
     redirect_to action: 'index'

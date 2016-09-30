@@ -1,3 +1,57 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+article {
+  text-align: center;
+  width: 70%;
+  margin: 3vh auto;
+  padding: 2vh 0;
+}
+
+article:nth-of-type(even) {
+  background-color: whitesmoke;
+}
+
+article p {
+  display: inline-block;
+}
+
+.title_block {
+  display: block;
+}
+
+h2.task_list {
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+form.button_to {
+  display: inline-block;
+}
+
+form.button_to #complete {
+  margin: 0;
+}
+
+input {
+  display: inline-block;
+  margin: 0 1vw;
+}
+
+input p.complete_button {
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  margin: 3vh auto;
+  text-align: center;
+}
+
+// h1 span.fancy_tada {
+//   animation: tada 2s;
+// }
