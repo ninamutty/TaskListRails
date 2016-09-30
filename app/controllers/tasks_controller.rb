@@ -18,7 +18,6 @@ class TasksController < ApplicationController
 
   def update
     @params = params
-
     @onetask = Task.find(params[:id].to_i)
 
     @onetask.title = params[:task][:title]
@@ -32,7 +31,7 @@ class TasksController < ApplicationController
 
   def complete
     @onetask = Task.find(params[:id].to_i)
-    
+
     @onetask.complete = true
     @onetask.completed_at = DateTime.now if @onetask.complete == true
     @onetask.save

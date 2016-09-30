@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+ a:-webkit-any-link {
+   text-decoration: none;
+   color: black;
+ }
+ a:-webkit-any-link:hover {
+   text-decoration: none;
+   color: black;
+   background-color: rgba(150, 232, 225, 0.7)
+ }
+
+header {
+  border: 1px solid black;
+  width: 100%;
+}
+
+header h1.title {
+  font-family: 'Bungee Shade', sans-serif, cursive;
+  font-size: 3rem;
+  display: inline-block;
+  border: 1px solid black;
+  margin: 3vh 5vw;
+}
+
+header nav {
+  display: inline-block;
+  border: 1px solid black;
+  margin-left: 30vw;
+}
+
+header nav ul {
+  list-style-type: none;
+}
+header nav ul li {
+  display: inline-block;
+  margin-right: 2vw;
+}
