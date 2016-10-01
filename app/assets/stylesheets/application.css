@@ -46,5 +46,6 @@ header nav ul li {
   display: inline-block;
   margin-right: 2vw;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
   padding: 1vh;
 }

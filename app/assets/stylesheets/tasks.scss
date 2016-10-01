@@ -7,14 +7,35 @@ article {
   width: 70%;
   margin: 3vh auto;
   padding: 2vh 0;
+  border: 2px solid whitesmoke;
+  letter-spacing: 0.2em;
 }
 
 article:nth-of-type(even) {
   background-color: whitesmoke;
+  // border: 2px solid whitesmoke;
 }
 
 article p {
   display: inline-block;
+}
+
+article .buttons {
+  display: inline-block;
+}
+
+article .buttons .complete_button_and_star {
+  display: inline-block;
+
+}
+
+article .buttons .complete_button_and_star p.complete_button {
+  display: inline-block;
+  margin: 0;
+}
+article .buttons .complete_button_and_star p.star {
+  display: inline-block;
+  margin: 0;
 }
 
 .title_block {
@@ -25,7 +46,7 @@ h2.task_list {
   display: inline-block;
   margin: auto;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 form.button_to {
@@ -45,15 +66,16 @@ input p.complete_button {
   margin: 0;
 }
 
-h1 {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.5rem;
-  margin: 3vh auto;
+h1.hello {
+  font-family: 'Bungee', 'Raleway', sans-serif;
+  font-size: 1.7rem;
+  margin: 6vh auto;
   text-align: center;
+  width: 50%;
 }
 
 .go-to-new {
   padding: 1vh;
   text-align: center;
-  margin-left: 80vw;
+  margin-left: 78vw;
 }
