@@ -65,3 +65,10 @@ In this wave we will extend the interactivity with users, allowing them to edit 
     - Hint: Rendering _partials_ in Rails.
 
  -->
+
+## Reflection
+I really enjoyed this project! I found that it helped me understand how the model, controller, and view interact with one another much better. I also found the routes much easier to follow when I was thinking through it myself rather than during lectures. For it being my first rails app, I'm happy with how it turned out!
+
+One thing in particular that I'm still working on understanding better is what information/methods go in the Model. We haven't added an methods to model yet, but we've learned that we should have thick models, and I'm not entirely sure what type of information should be there. (I'm guessing it may be about relationships between databases?). I'd also love more practice with what information is needed for the new, update, edit, and create methods. I understand if I sit down with past examples but want to get to the point that the data flow comes much more naturally.
+
+Discussing this project with my chair pair was helpful! We had very similar routes and methods and it was helpful to discuss them again. We also asked why you need to call Task.new in the new method in the controller (answer: so it know what data can be in the form! This object is not actually saved - it's saved under the create method), which was helpful to keep clear the different stages of the process!
