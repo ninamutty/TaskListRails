@@ -15,3 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Hide the .env because it's full of secrets!
+/.env
