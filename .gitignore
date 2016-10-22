@@ -17,4 +17,4 @@
 /tmp
 
 # Hide the .env because it's full of secrets!
-/.env
+.env
