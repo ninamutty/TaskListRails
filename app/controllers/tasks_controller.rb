@@ -36,8 +36,7 @@ class TasksController < ApplicationController
     @task.complete = true
     @task.complete == true ? @task.completed_at = DateTime.now : @task.completed_at = nil
     @task.save
-
-    redirect_to tasks_path
+    redirect_to :back
   end
 
   def destroy
