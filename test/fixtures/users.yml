@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  uid: MyString
-  name: MyString
-  provider: MyString
-  email: MyString
+ada:
+  id: 1
+  uid: 12342
+  name: "Ada"
+  provider: github
+  email: 'a@b.com'
 
-two:
-  uid: MyString
-  name: MyString
-  provider: MyString
-  email: MyString
+babbge:
+  id: 2
+  uid: 12345
+  name: "Babbage"
+  provider: github
+  email: 'babbage@babbage.com'
