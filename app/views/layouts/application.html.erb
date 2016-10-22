@@ -14,11 +14,11 @@
   <nav>
     <ul>
       <li class='hvr-sweep-to-right'> <%= link_to "Home", root_path %></li>
-      <li class='hvr-sweep-to-right'>  <%= link_to "New Task", new_path %>  </li>
+      <li class='hvr-sweep-to-right'>  <%= link_to "New Task", new_task_path %>  </li>
       <% if current_user != nil %>
-        <li><%= link_to('Log Out', 'sessions/destroy', method: :delete) %></li>
+        <li class='hvr-sweep-to-right'><%= link_to('Log Out', 'sessions/destroy', method: :delete) %></li>
       <% else %>
-        <li> <%= link_to('Log In', '/auth/github') %> </li>
+        <li class='hvr-sweep-to-right'> <%= link_to('Log In', '/auth/github') %> </li>
       <% end %>
     </ul>
 

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     session[:user_id] = @user.id
 
-    redirect_to sessions_create_path
+    redirect_to tasks_path
   end
 
   def index

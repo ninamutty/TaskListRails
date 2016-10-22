@@ -1,59 +1,82 @@
 class TasksController < ApplicationController
+  before_action :find_user
+  before_action :find_task, only: [:show, :edit, :complete, :destroy, :update]
+
   def index
-    @tasks = Task.all
+    @tasks = Task.where(user_id: @user.id).order('id')
   end
 
   def show
-    @onetask = Task.find(params[:id].to_i)
   end
 
   def new
-    @onetask = Task.new
+    @task = Task.new
+    @post_path = tasks_path
+    @post_method = :post
   end
 
   def edit
-    @onetask = Task.find(params[:id].to_i)
+    @post_path = task_path
+    @post_method = :put
   end
 
   def update
-    @params = params
-    @onetask = Task.find(params[:id].to_i)
-
-    @onetask.title = params[:task][:title]
-    @onetask.description = params[:task][:description]
-    @onetask.complete = params[:task][:complete]
-    @onetask.complete == true ? @onetask.completed_at = DateTime.now : @onetask.completed_at = nil
-
-    @onetask.save
-    redirect_to action: 'index'
+    if @task.update(task_params)
+      @task.rating
+      redirect_to task_path(@task.id)
+    else
+      @error = "Did not save successfully. Please try again."
+      @post_path = task_path(@task.id)
+      @post_method = :put
+      render :edit
+    end
   end
 
   def complete
-    @onetask = Task.find(params[:id].to_i)
+    @task.complete = true
+    @task.complete == true ? @task.completed_at = DateTime.now : @task.completed_at = nil
+    @task.save
 
-    @onetask.complete = true
-    @onetask.complete == true ? @onetask.completed_at = DateTime.now : @onetask.completed_at = nil
-    @onetask.save
-
-    redirect_to action: 'index'
+    redirect_to tasks_path
   end
 
   def destroy
-    @onetask = Task.destroy(params[:id].to_i)
-    redirect_to action: 'index'
+    if @task.class == Task
+      @task.destroy
+      redirect_to tasks_path
+    end
   end
 
   def create
-    @params = params
-    @onetask = Task.new
+    @task = Task.new(task_params)
+    @task.complete == true ? @task.completed_at = DateTime.now : @task.completed_at = nil
+    @task.user_id = @user.id
 
-    @onetask.title = params[:task][:title]
-    @onetask.description = params[:task][:description]
-    @onetask.complete = params[:task][:complete]
-    @onetask.complete == true ? @onetask.completed_at = DateTime.now : @onetask.completed_at = nil
+    if @task.save
+      redirect_to tasks_path
+    else
+      @error = "Did not save successfully. Please try again."
+      @post_path = merchant_product_tasks_path
+      @post_method = :post
+      render :new
+    end
+  end
 
-    @onetask.save
-    redirect_to action: 'index'
+  private
+  def find_user
+    if User.exists?(session[:user_id].to_i) == true
+      return @user = User.find_by(id: session[:user_id].to_i)
+    else
+      render :status => 404
+    end
+  end
+
+  def find_task
+    if Task.exists?(params[:user_id].to_i) == true
+      return @task = Task.find(params[:user_id].to_i)
+    else
+      render :status => 404
+    end
   end
 
   def self.alltasks
@@ -64,6 +87,7 @@ class TasksController < ApplicationController
     ]
   end
 
-
-
+  def task_params
+    params.require(:task).permit(:title, :description, :complete)
+  end
 end

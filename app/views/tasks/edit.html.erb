@@ -1,14 +1,2 @@
-<h1>Edit Your Task: </h1>
-<%= @params %>
-<%= form_for @onetask, url: update_path do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-
-  <%= f.label :complete %>
-  <%= f.check_box :complete %>
-
-  <%= f.submit %>
-<% end %>
+<h1> Edit Task: <%= @task.name %></h1>
+<%= render partial: 'taskform' %>
