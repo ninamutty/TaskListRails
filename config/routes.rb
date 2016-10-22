@@ -1,28 +1,42 @@
 Rails.application.routes.draw do
-  get 'sessions/create'
-
   root to: 'tasks#index'
 
-  #resources :sessions, :only => [:create]
-  get "/auth/:provider/callback", to: 'sessions#create'
+  resources :sessions
+  resources :tasks
 
-  get 'tasks/index', as: 'index'
+  patch 'tasks/:id/complete' => 'tasks#complete', as: 'complete'
 
-  get 'tasks/show'
-  get 'tasks/show/:id' => 'tasks#show', as: 'show'
+  get "/auth/:provider/callback" =>  "sessions#create"
 
-  get 'tasks/new', as: 'new'
-  post 'tasks/index' => 'tasks#create', as: 'create'
+
+
+
+
+  # get 'sessions/create'
+  #
+  # get 'sessions/destroy'
+
+  # get 'tasks/index', as: 'index'
+  #
+  # get 'tasks/show'
+  # get 'tasks/show/:id' => 'tasks#show', as: 'show'
+  #
+  # get 'tasks/new', as: 'new'
+  # post 'tasks/index' => 'tasks#create', as: 'create'
 
   # post 'tasks/create' => 'tasks#create', as: 'tasks_create'
 
 
-  get 'tasks/:id/edit' => 'tasks#edit', as: 'edit'
-  patch 'tasks/:id/update' => 'tasks#update', as: 'update'
-  patch 'tasks/:id/complete' => 'tasks#complete', as: 'complete'
+  # get 'tasks/:id/edit' => 'tasks#edit', as: 'edit'
+  # patch 'tasks/:id/update' => 'tasks#update', as: 'update'
+  # patch 'tasks/:id/complete' => 'tasks#complete', as: 'complete'
 
 
-  delete 'tasks/:id/destroy' => 'tasks#destroy', as: 'delete'
+  # delete 'tasks/:id/destroy' => 'tasks#destroy', as: 'delete'
+
+  #get "/auth/:provider/callback" =>  "sessions#create"
+
+
 
 
 
