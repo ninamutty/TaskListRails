@@ -14,8 +14,16 @@
   <nav>
     <ul>
       <li class='hvr-sweep-to-right'> <%= link_to "Home", root_path %></li>
-      <li class='hvr-sweep-to-right'>  <%= link_to "New Task", new_path %>  </li>
+      <% if current_user != nil %>
+        <li class='hvr-sweep-to-right'><%= link_to('Log Out', '/sessions/destroy', method: :delete) %></li>
+      <% else %>
+        <li class='hvr-sweep-to-right'> <%= link_to('Log In', '/auth/github') %> </li>
+      <% end %>
     </ul>
+
+    <% if flash[:notice] %>
+      <p class="flash-notice"> <%= flash[:notice] %></p>
+    <% end %>
   </nav>
 </header>
 <%= yield %>

@@ -35,7 +35,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'dotenv-rails'
 end
+
+gem 'omniauth'
+gem 'omniauth-github'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -46,4 +50,8 @@ group :development do
   # Bug is developments (don't need it in production)
   gem "better_errors"
   gem "binding_of_caller"
+end
+
+group :test do
+  gem 'minitest-reporters'
 end

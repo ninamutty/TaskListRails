@@ -1,17 +1,21 @@
-<h1 class="hello"> Hello!! Welcome to <span class="animated tada">Task Master!</span> Here are your tasks: (Do them or DIE) </h1>
-<% @tasks.each do |task| %>
-  <article>
-    <div class="title_block">
-      <h2 class='hvr-sweep-to-left task_list'><%= link_to(task.title, show_path(task.id)) %></h2>
-    </div>
-    <div class="buttons">
-      <p> <%= button_to "Edit", {action: "edit", id: task.id}, method: :get %></p>
-      <div class="complete_button_and_star">
-        <p class="complete_button"> <%= button_to "Complete", {action: "complete", id: task.id}, method: :patch %></p>
-        <p class="star">  <%= " ⭐️ " if task.complete == true %></p>
+<% if current_user == nil %>
+  <h2 class="welcome-message"> Welcome to Task Master! Please <%= link_to('Login', '/auth/github') %> to continue </h2>
+<% else %>
+  <h2 class="welcome-message"> Welcome, <%= @user.name %>! Here are your tasks:  </h2>
+  <% @tasks.each do |task| %>
+    <article>
+      <div class="title_block">
+        <h2 class='hvr-sweep-to-left task_list'><%= link_to(task.title, task_path(task.id)) %></h2>
       </div>
-      <p> <%= button_to "Delete", {action: "destroy", id: task.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
-    </div>
-  </article>
+      <div class="buttons">
+        <p> <%= button_to "Edit", {action: "edit", id: task.id}, method: :get %></p>
+        <div class="complete_button_and_star">
+          <p class="complete_button"> <%= button_to (task.complete == false ? "Mark Complete" : "Mark Incomplete"), {action: "complete", id: task.id}, method: :patch %></p>
+          <p class="star">  <%= " ⭐️ " if task.complete == true %></p>
+        </div>
+        <p> <%= button_to "Delete", {action: "destroy", id: task.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
+      </div>
+    </article>
+  <% end %>
+  <p class="go-to-new hvr-sweep-to-right"><%= link_to("+ Add Task", new_task_path) %></p>
 <% end %>
-<p class="go-to-new hvr-sweep-to-right"><%= link_to("+ Add Task", new_path) %></p>
