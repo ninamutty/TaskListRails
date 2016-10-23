@@ -1,20 +1,22 @@
-<h5 class="error-message"><%= @error if @error %></h5>
-<%= form_for @task,
-  method: @post_method,
-  url: @post_path do |f| %>
-  <div class="form_attribute">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="form_attribute">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <div class="form_attribute">
-    <%= f.label :complete %>
-    <%= f.check_box :complete %>
-  </div>
-  <div class="form_attribute">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="row full-form">
+  <h5 class="error-message"><%= @error if @error %></h5>
+  <%= form_for @task,
+    method: @post_method,
+    url: @post_path do |f| %>
+    <div class="form_attribute">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form_attribute">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="form_attribute">
+      <%= f.label :complete %>
+      <%= f.check_box :complete %>
+    </div>
+    <div class="form_attribute">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

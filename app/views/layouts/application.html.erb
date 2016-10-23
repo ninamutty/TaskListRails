@@ -2,31 +2,35 @@
 <html>
 <head>
   <title>TaskListRails</title>
-  <link href="https://fonts.googleapis.com/css?family=Assistant:200|Bungee|Bungee+Shade|Heebo:100|Raleway|Scope+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Bowlby+One+SC|Julius+Sans+One|Open+Sans+Condensed:300|Pacifico|Quicksand|Unica+One" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
-  <h1 class="title hvr-sweep-to-right"> <%= link_to "Task Master", root_path %></h1>
-  <nav>
-    <ul>
-      <li class='hvr-sweep-to-right'> <%= link_to "Home", root_path %></li>
-      <% if current_user != nil %>
-        <li class='hvr-sweep-to-right'><%= link_to('Log Out', '/sessions/destroy', method: :delete) %></li>
-      <% else %>
-        <li class='hvr-sweep-to-right'> <%= link_to('Log In', '/auth/github') %> </li>
-      <% end %>
-    </ul>
-
-    <% if flash[:notice] %>
-      <p class="flash-notice"> <%= flash[:notice] %></p>
-    <% end %>
-  </nav>
-</header>
-<%= yield %>
-
+  <header>
+    <div class='row'>
+      <div class="title-block small-12 medium-6 large-2">
+        <h1 class="title hvr-sweep-to-right"> <%= link_to "Task", root_path, class: 'task' %> <%= link_to "Master", root_path,  class: 'master' %></h1>
+      </div>
+      <nav class="nav small-12 medium-6 large-3">
+        <ul>
+          <li class='hvr-sweep-to-right'> <%= link_to "Home", root_path %></li>
+          <% if current_user != nil %>
+            <li class='hvr-sweep-to-right'><%= link_to('Log Out', '/sessions/destroy', method: :delete) %></li>
+          <% else %>
+            <li class='hvr-sweep-to-right'> <%= link_to('Log In', '/auth/github') %> </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <% if flash[:notice] %>
+    <p class="flash-notice"> <%= flash[:notice] %></p>
+  <% end %>
+  <main>
+    <%= yield %>
+  </main>
 </body>
 </html>

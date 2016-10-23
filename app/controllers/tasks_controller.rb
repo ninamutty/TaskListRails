@@ -12,7 +12,7 @@ class TasksController < ApplicationController
       redirect_to root_path
     end
     if @task.user_id == @user.id
-      @task
+      return @task
     else
       flash[:notice] = "You Can Only See Tasks That Belong to You"
       redirect_to root_path
@@ -26,39 +26,77 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @post_path = task_path
-    @post_method = :put
+    if @task == nil
+      flash[:notice] = "Task Does not Exist"
+      redirect_to root_path
+    end
+    if @task.user_id == @user.id
+      @post_path = task_path
+      @post_method = :put
+    else
+      flash[:notice] = "You Can Only Edit Tasks That Belong to You"
+      redirect_to root_path
+    end
   end
 
   def update
-    if @task.update(task_params)
-      @task.complete == true ? @task.completed_at = DateTime.now : @task.completed_at = nil
-      redirect_to task_path(@task.id)
+    if @task == nil
+      flash[:notice] = "Task Does not Exist"
+      redirect_to root_path
+    end
+
+    if @task.user_id == @user.id
+      if @task.update(task_params)
+        @task.complete == true ? @task.completed_at = DateTime.now : @task.completed_at = nil
+        redirect_to task_path(@task.id)
+      else
+        @error = "Did not save successfully. Please try again."
+        @post_path = task_path(@task.id)
+        @post_method = :put
+        render :edit
+      end
     else
-      @error = "Did not save successfully. Please try again."
-      @post_path = task_path(@task.id)
-      @post_method = :put
-      render :edit
+      flash[:notice] = "You Can Only Update Tasks That Belong to You"
+      redirect_to root_path
     end
   end
 
   def complete
-    if @task.complete == false
-      @task.complete = true
-      @task.completed_at = DateTime.now
-      @task.save
-    else
-      @task.complete = false
-      @task.completed_at = nil
-      @task.save
+    if @task == nil
+      flash[:notice] = "Task Does not Exist"
+      redirect_to root_path
     end
-    redirect_to :back
+
+    if @task.user_id == @user.id
+      if @task.complete == false
+        @task.complete = true
+        @task.completed_at = DateTime.now
+        @task.save
+      else
+        @task.complete = false
+        @task.completed_at = nil
+        @task.save
+      end
+      redirect_to :back
+    else
+      flash[:notice] = "You Can Onle Update Tasks That Belong to You"
+      redirect_to root_path
+    end
   end
 
   def destroy
-    if @task.class == Task
-      @task.destroy
-      redirect_to tasks_path
+    if @task == nil
+      flash[:notice] = "Task Does not Exist"
+      redirect_to root_path
+    end
+    if @task.user_id == @user.id
+      if @task.class == Task
+        @task.destroy
+        redirect_to tasks_path
+      end
+    else
+      flash[:notice] = "You Can Only Edit Tasks That Belong to You"
+      redirect_to root_path
     end
   end
 

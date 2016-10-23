@@ -1,21 +1,30 @@
 <% if current_user == nil %>
   <h2 class="welcome-message"> Welcome to Task Master! Please <%= link_to('Login', '/auth/github') %> to continue </h2>
 <% else %>
-  <h2 class="welcome-message"> Welcome, <%= @user.name %>! Here are your tasks:  </h2>
-  <% @tasks.each do |task| %>
-    <article>
-      <div class="title_block">
-        <h2 class='hvr-sweep-to-left task_list'><%= link_to(task.title, task_path(task.id)) %></h2>
-      </div>
-      <div class="buttons">
-        <p> <%= button_to "Edit", {action: "edit", id: task.id}, method: :get %></p>
-        <div class="complete_button_and_star">
-          <p class="complete_button"> <%= button_to (task.complete == false ? "Mark Complete" : "Mark Incomplete"), {action: "complete", id: task.id}, method: :patch %></p>
-          <p class="star">  <%= " ⭐️ " if task.complete == true %></p>
+  <% if @tasks == [] %>
+    <h2 class="welcome-message"> Welcome, <%= @user.name %>! </h2>
+    <h2 class="to-begin"> Please Create a New Task to Begin </h2>
+  <% else %>
+    <h2 class="welcome-message"> Welcome, <%= @user.name %>!  </h2>
+
+    <div class="row">
+    <% i = 1 %>
+    <% @tasks.each_with_index do |task, index| %>
+      <article class="medium-12 column <%= "end" if task == @tasks.last %>">
+        <div class="title_block">
+          <h3 class='hvr-sweep-to-left task_list <%= "completed-task" if task.complete == true %>' > <%= "#{index + 1}. "  %><%= link_to(task.title, task_path(task.id)) %></h3>
         </div>
-        <p> <%= button_to "Delete", {action: "destroy", id: task.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
-      </div>
-    </article>
+        <div class="buttons">
+          <p> <%= button_to "Edit", {action: "edit", id: task.id}, method: :get %></p>
+          <div class="complete_button_and_star">
+            <p class="complete_button"> <%= button_to (task.complete == false ? "Mark Complete" : "Mark Incomplete"), {action: "complete", id: task.id}, method: :patch %></p>
+          </div>
+          <p> <%= button_to "Delete", {action: "destroy", id: task.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
+        </div>
+      </article>
+      <% i += 1 %>
+    <% end %>
+    </div>
   <% end %>
   <p class="go-to-new hvr-sweep-to-right"><%= link_to("+ Add Task", new_task_path) %></p>
 <% end %>
