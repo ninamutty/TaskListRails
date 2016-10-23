@@ -7,6 +7,16 @@ class TasksController < ApplicationController
   end
 
   def show
+    if @task == nil
+      flash[:notice] = "Task Does not Exist"
+      redirect_to root_path
+    end
+    if @task.user_id == @user.id
+      @task
+    else
+      flash[:notice] = "You Can Only See Tasks That Belong to You"
+      redirect_to root_path
+    end
   end
 
   def new
