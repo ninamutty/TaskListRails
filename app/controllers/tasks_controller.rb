@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      @task.rating
+      @task.complete == true ? @task.completed_at = DateTime.now : @task.completed_at = nil
       redirect_to task_path(@task.id)
     else
       @error = "Did not save successfully. Please try again."
@@ -33,9 +33,15 @@ class TasksController < ApplicationController
   end
 
   def complete
-    @task.complete = true
-    @task.complete == true ? @task.completed_at = DateTime.now : @task.completed_at = nil
-    @task.save
+    if @task.complete == false
+      @task.complete = true
+      @task.completed_at = DateTime.now
+      @task.save
+    else
+      @task.complete = false
+      @task.completed_at = nil
+      @task.save
+    end
     redirect_to :back
   end
 
@@ -71,8 +77,8 @@ class TasksController < ApplicationController
   end
 
   def find_task
-    if Task.exists?(params[:user_id].to_i) == true
-      return @task = Task.find(params[:user_id].to_i)
+    if Task.exists?(params[:id].to_i) == true
+      return @task = Task.find(params[:id].to_i)
     else
       render :status => 404
     end

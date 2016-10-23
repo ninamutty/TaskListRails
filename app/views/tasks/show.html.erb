@@ -8,7 +8,7 @@
   <% end %>
 
 
-  <p> <%= button_to "Edit", {action: "edit", id: @task.id}, method: :get, data: {confirm: "Do you want to edit?"} %></p>
+  <p> <%= button_to "Edit", {action: "edit", id: @task.id}, method: :get %></p>
   <p> <%= button_to "Delete", {action: "destroy", id: @task.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
 
 </article>
