@@ -7,10 +7,16 @@ class TasksController < ApplicationController
   end
 
   def show
+
     if @task == nil
       flash[:notice] = "Task Does not Exist"
       redirect_to root_path
     end
+
+    if @task.user_id != sessions[:user_id].to_i
+      #...
+    end
+
     if @task.user_id == @user.id
       return @task
     else
@@ -128,7 +134,8 @@ class TasksController < ApplicationController
     if Task.exists?(params[:id].to_i) == true
       return @task = Task.find(params[:id].to_i)
     else
-      render :status => 404
+      render file: "#{Rails.root}/public/404.html", layout: true, status: 404
+      #render :status => 404
     end
   end
 

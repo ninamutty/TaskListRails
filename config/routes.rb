@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'tasks#index'
 
-  resources :sessions
+  resources :sessions, only: [:destroy, :index, :create]
   resources :tasks
 
   patch 'tasks/:id/complete' => 'tasks#complete', as: 'complete'

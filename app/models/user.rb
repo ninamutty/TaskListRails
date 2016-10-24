@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     user.provider = 'github'
     user.name = auth_hash['info']['name']
     user.email = auth_hash['info']['email']
-
+    
     return user
   end
 

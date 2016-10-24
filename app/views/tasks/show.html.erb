@@ -1,7 +1,7 @@
-<% if @task == nil %>
+<!-- <% if @task == nil %>
   <h2 class=" welcome-message no-existance-error"> The Task You Seek Does Not Exist </h2>
   <h3> <%= link_to("Back To Home", root_path) %></h3>
-<% else %>
+<% else %> -->
   <article>
     <h2 class="welcome-message"><%=  @task.title%></h2>
     <h3><%=  @task.description%></h3>
@@ -16,4 +16,4 @@
     <p> <%= button_to "Delete", {action: "destroy", id: @task.id}, method: :delete, data: {confirm: "Are you sure?"} %></p>
 
   </article>
-<% end %>
+<!-- <% end %> -->
