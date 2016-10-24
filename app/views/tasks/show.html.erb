@@ -1,14 +1,14 @@
 <% if @task == nil %>
-  <h1 class="no-existance-error"> The Task You Seek Does Not Exist </h1>
-  <h2> <%= link_to("Back To Home", root_path) %></h2>
+  <h2 class=" welcome-message no-existance-error"> The Task You Seek Does Not Exist </h2>
+  <h3> <%= link_to("Back To Home", root_path) %></h3>
 <% else %>
   <article>
-    <h1><%=  @task.title%></h1>
-    <h2><%=  @task.description%></h2>
-    <p> Complete: <%= @task.complete %> </p>
+    <h2 class="welcome-message"><%=  @task.title%></h2>
+    <h3><%=  @task.description%></h3>
+    <p class="complete-info"><span> Completed:</span> <%= @task.complete %> </p>
 
     <% if @task.complete == true %>
-      <p> Completed: <%= @task.completed_at %></p>
+      <p class="complete-info"> <span>Completed:</span> <%= @task.completed_at %></p>
     <% end %>
 
 

@@ -82,8 +82,23 @@ h2.welcome-message {
   font-family: 'Unica One', sans-serif;
   font-size: 3rem;
   border-bottom: 0.75px solid gray;
-  width: 40%;
+  width: 50%;
+  padding-bottom: 2%;
 }
+
+h2.bottom-welcome {
+  border: none;
+}
+/*
+h2.welcome-message a.main-login {
+  font-family: 'Unica One', sans-serif;
+}*/
+
+h2.welcome-message a.main-login:hover {
+  font-weight: 600;
+}
+
+
 
 h2.to-begin {
   text-align: center;
@@ -91,12 +106,14 @@ h2.to-begin {
   letter-spacing: 6px;
   font-size: 1.7rem;
   width: 80%;
+  font-family: 'Raleyway', sans-serif;
   /*font-f*/
 }
 
 
 h3 {
   text-transform: uppercase;
+  margin: 2% 0;
 }
 
 h3.completed-task {
@@ -131,4 +148,14 @@ p.go-to-new {
   font-family: 'Raleyway', sans-serif;
   font-size: 1rem;
   height: 20%;
+}
+
+
+p.complete-info {
+  margin: 1% 5%;
+  font-size: 1.2rem;
+}
+
+p.complete-info span {
+  font-weight: 600;
 }

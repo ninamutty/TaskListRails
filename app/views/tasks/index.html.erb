@@ -1,9 +1,10 @@
 <% if current_user == nil %>
-  <h2 class="welcome-message"> Welcome to Task Master! Please <%= link_to('Login', '/auth/github') %> to continue </h2>
+  <h2 class="welcome-message"> Welcome to Task Master!</h2>
+  <h2 class="welcome-message to-begin bottom-welcome"> Please <%= link_to('Login', '/auth/github', class: "main-login") %> to Continue </h2>
 <% else %>
   <% if @tasks == [] %>
     <h2 class="welcome-message"> Welcome, <%= @user.name %>! </h2>
-    <h2 class="to-begin"> Please Create a New Task to Begin </h2>
+    <h2 class="to-begin bottom-welcome"> Please Create a New Task to Begin </h2>
   <% else %>
     <h2 class="welcome-message"> Welcome, <%= @user.name %>!  </h2>
 

@@ -7,12 +7,14 @@ article {
   width: 70%;
   margin: 3vh auto;
   padding: 2vh 0;
-  border: 2px solid whitesmoke;
+  border-left: 0.75px solid gray;
+  border-right: 0.75px solid gray;
+
   letter-spacing: 0.2em;
 }
 
 article:nth-of-type(even) {
-  background-color: whitesmoke;
+  background-color: #f9f9f9;
   // border: 2px solid whitesmoke;
 }
 
@@ -42,12 +44,6 @@ article .buttons .complete_button_and_star p.star {
   display: block;
 }
 
-h2.task_list {
-  display: inline-block;
-  margin: auto;
-  text-align: center;
-  text-transform: capitalize;
-}
 
 form.button_to {
   display: inline-block;
@@ -67,7 +63,6 @@ input p.complete_button {
 }
 
 h1.hello {
-  font-family: 'Bungee', 'Raleway', sans-serif;
   font-size: 1.7rem;
   margin: 6vh auto;
   text-align: center;
