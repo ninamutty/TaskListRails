@@ -1,14 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 adas_task:
-  id: 1
   title: "Write the 1st Code!"
   description: "Fortran"
-  user: :ada
+  user: ada
   completed_at: 2016-09-29 09:32:00
 
 babbages_task:
-  id: 2
   title: 'Make the first computer'
   description: "Build it!"
-  user: :babbage
+  user: babbage

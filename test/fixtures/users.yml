@@ -1,14 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 ada:
-  id: 1
   uid: 12342
   name: "Ada"
   provider: github
   email: 'a@b.com'
 
 babbge:
-  id: 2
   uid: 12345
   name: "Babbage"
   provider: github

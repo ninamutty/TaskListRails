@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def show
-
+    # raise
     if @task == nil
       flash[:notice] = "Task Does not Exist"
       redirect_to root_path

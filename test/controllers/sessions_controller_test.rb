@@ -13,9 +13,19 @@ class SessionsControllerTest < ActionController::TestCase
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
   end
 
+  # test "should be able to create a new product" do
+  #   post_params =  {name: "Glitter Wand", description: "a glittery wand", price: "15.00", image: 'http://placekitten.com/200/300', merchant_id: 2, inventory: 7, rating: 5}
+  #
+  #   post :create, {merchant_id: (products(:glitter).merchant).id, product: post_params}
+  #   assert_response :redirect
+  # end
+
+
   test "should be able to create a new user" do
+    puts "User: #{@current_user}"
+    # puts "User id: #{@user.id}"
     get :create, {provider: 'github'}
-    assert session[:user_id] == @user.id
+    assert session[:user_id] == @current_user.id
     assert_redirected_to tasks_path
   end
 
@@ -38,7 +48,7 @@ class SessionsControllerTest < ActionController::TestCase
 
     delete :destroy
     assert_redirected_to root_path
-    assert_equal sessions[:user_id], nil
+    assert_equal current_user, nil
   end
 
 end
