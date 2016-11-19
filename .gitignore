@@ -18,3 +18,6 @@
 
 # Hide the .env because it's full of secrets!
 .env
+
+.DS_Store
+/.DS_Store
