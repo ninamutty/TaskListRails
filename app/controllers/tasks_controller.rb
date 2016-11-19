@@ -13,7 +13,7 @@ class TasksController < ApplicationController
       redirect_to root_path
     end
 
-    if @task.user_id != sessions[:user_id].to_i
+    if @task.user_id != session[:user_id].to_i
       #...
     end
 
@@ -126,7 +126,7 @@ class TasksController < ApplicationController
     if User.exists?(session[:user_id].to_i) == true
       return @user = User.find_by(id: session[:user_id].to_i)
     else
-      render :status => 404
+      render file: "#{Rails.root}/public/404.html", layout: true, status: 404
     end
   end
 
@@ -135,7 +135,6 @@ class TasksController < ApplicationController
       return @task = Task.find(params[:id].to_i)
     else
       render file: "#{Rails.root}/public/404.html", layout: true, status: 404
-      #render :status => 404
     end
   end
 
